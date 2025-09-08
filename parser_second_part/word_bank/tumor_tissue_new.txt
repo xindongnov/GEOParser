@@ -1,0 +1,43 @@
+Carcinoma
+Sarcoma
+Myeloma
+Leukemia
+Lymphoma
+Melanoma
+Germinoma
+tumor
+cancer
+glioma
+neuroblastoma
+thyroid carcinoma
+colorectal cancer
+intestinal adenoma
+hepatoblastoma
+glioblastoma
+Hepatoblastoma
+retinoblastoma
+medulloblastoma
+Medulloblastoma
+adenocarcinoma
+sporadic vestibular schwannoma
+endometrial tumor
+colorectal adenocarcinoma
+GBM
+TNBC
+Triple negative breast cancer
+Rhabdomyosarcoma
+oral squamous cell carcinoma
+OSCC
+clear cell renal cell carcinoma
+hepatocellular carcinoma
+head and neck squamous cell carcinoma
+HNSCC
+nasopharyngeal carcinoma
+nasopharyngeal
+Non-small-cell lung carcinoma
+NSCLC
+Non small cell lung carcinoma
+Renal cell carcinoma
+breast cancer
+esophageal carcinoma
+thyroid cancer

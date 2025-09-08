@@ -1,0 +1,97 @@
+Platform	Platform_rename	Type	Remarks
+10x	10X Genomics	10X Genomics	
+10x Chromium	10X Genomics	10X Genomics	
+10X Chromium system	10X Genomics	10X Genomics
+10xgenomics	10X Genomics	10X Genomics	
+10x Genomcis	10X Genomics	10X Genomics	
+10x genomics	10X Genomics	10X Genomics	
+10x Genomics Chromium	10X Genomics	10X Genomics	
+10X Genomics Chromium 3' scRNA-seq	10X Genomics	10X Genomics	
+10X Genomics protocol	10X Genomics	10X Genomics	
+10x Genomics V2	10X Genomics	10X Genomics	
+Dropseq	Drop-seq	droplet/well-based	
+10X v2 sequencing	10X Genomics	10X Genomics	
+10XGENOMICS	10X Genomics	10X Genomics	
+CROP seq	CROP-seq	droplet/well-based	
+10X  Genomics	10X Genomics	10X Genomics	
+3' droplet-based	droplet/well-based	droplet/well-based	
+BD Rhapsody	BD Rhapsody	droplet/well-based	
+c1	C1	droplet/well-based	
+C1 system and C1 high-throughput integrated fluidics circuits (HT IFCs)	C1	droplet/well-based	
+C1™ Single-Cell Auto Prep System	C1	droplet/well-based	
+CEL-seq	CEL-seq	droplet/well-based	
+CEL-seq2	CEL-seq	droplet/well-based	
+CEL-Seq2	CEL-seq	droplet/well-based	
+Chromium Single Cell	10X Genomics	10X Genomics	
+Chromium Single Cell 3' Reagent Kit	10X Genomics	10X Genomics	
+CITESeq	CITE-seq	10X Genomics	
+CITE-seq	CITE-seq	10X Genomics	
+ddseq	SureCell	droplet/well-based	
+DNBSEQ-G50	DNBSEQ-G50	droplet/well-based	
+Droplet-based	droplet/well-based	droplet/well-based	
+drop-seq	Drop-seq	droplet/well-based	
+Fluidigm	C1	droplet/well-based	
+Fluidigm C1	C1	droplet/well-based	
+Fluidigm C1 system	C1	droplet/well-based	
+G&T-seq	G&T-seq	droplet/well-based	
+GEXSCOPE	GEXSCOPE	10X Genomics	
+GEXSCOPETM	GEXSCOPE	10X Genomics	
+HyDrop	Drop-seq	droplet/well-based	
+HyPR-seq	HyPR-seq	droplet/well-based	
+iCell8	iCELL8	droplet/well-based	
+indrop	inDrop	droplet/well-based	
+InDrop2	inDrop	droplet/well-based	
+inDrops	inDrop	droplet/well-based	
+Laser-capture microscopy coupled with Smart-seq2	Smart-seq2	Smart-seq2	
+marsseq	MARS-seq	droplet/well-based	
+MARS-seq	MARS-seq	droplet/well-based	
+MARS-seq2.0	MARS-seq	droplet/well-based	
+MATQ-seq	scCOOL-seq	droplet/well-based	
+mCEL-Seq2	CEL-seq	droplet/well-based	
+mCelSeq2 protocol	CEL-seq	droplet/well-based	
+MGI DNBelab C4	MGI DNBelab C4	droplet/well-based	
+Micorwell-seq	Micro-well	droplet/well-based	
+microwell	Micro-well	droplet/well-based	
+micro-well	Micro-well	droplet/well-based	
+Micro-well seq	Micro-well	droplet/well-based	
+microwell single cell	Micro-well	droplet/well-based	
+microwellseq	Micro-well	droplet/well-based	
+Microwell-seq	Micro-well	droplet/well-based	
+Patch-Seq	Smart-seq	Smart-seq2	
+QBC	Quartz-seq	droplet/well-based	
+QuantSeq	Quartz-seq	droplet/well-based	
+Quartz-seq	Quartz-seq	droplet/well-based	
+Quartz-Seq2-based Barcode Counting	Quartz-seq	droplet/well-based	
+scCapture-seq	scCapture-seq	droplet/well-based	
+sci-Plex-GxE	CROP-seq	droplet/well-based	
+SCITO-seq	SCITO-seq	droplet/well-based	
+SCOPE-Seq	Drop-seq	droplet/well-based	
+SCRB-seq	SCRB-seq	droplet/well-based	
+scTrio-seq	Smart-seq	Smart-seq2	
+sctrioseq2	Smart-seq	Smart-seq2	
+scTrio-seq2	Smart-seq	Smart-seq2	
+SeqWell	Seq-well	droplet/well-based	
+Seq-well	Seq-well	droplet/well-based	
+ShareSeq	SHARE-seq	droplet/well-based	
+SHARE-seq	SHARE-seq	droplet/well-based	
+SMARTer	SMARTer	Smart-seq2	
+SMARTer Ultra Low RNA kit	SMARTer	Smart-seq2	
+smartseq	Smart-seq	Smart-seq2	
+smart-seq	Smart-seq	Smart-seq2	
+smartseq 2	Smart-seq2	Smart-seq2	
+smartseq two	Smart-seq2	Smart-seq2	
+SMART-Seq v4	Smart-seq	Smart-seq2	
+Smartseq_htseq	Smart-seq	Smart-seq2	
+SMARTSEQ2	Smart-seq2	Smart-seq2	
+Smart-Seq2	Smart-seq2	Smart-seq2	
+SMRT	SMRT	Smart-seq2	
+SMRT-seq2	SMRT	Smart-seq2	
+SORT-seq	CEL-seq	Smart-seq2	
+SPRI beads	Smart-seq2	Smart-seq2	
+STRT-seq	Smart-seq2	Smart-seq2	
+SUPeR-seq	SUPeR-seq	droplet/well-based	
+SureCell	SureCell	droplet/well-based	
+TARGET-seq	TARGET-seq	droplet/well-based	
+TAS Seq	Tas-Seq	droplet/well-based	
+TAS-Seq	Tas-Seq	droplet/well-based	
+TempO-Seq	TempO-Seq	droplet/well-based	

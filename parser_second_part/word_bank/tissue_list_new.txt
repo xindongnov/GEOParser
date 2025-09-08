@@ -1,0 +1,548 @@
+Abdomen
+Abdominal adipose tissue
+Abdominal fat pad
+Acinus
+Adipocyte
+Adipose
+Adrenal gland
+Adventitia
+Afferent artery
+airway
+Airway epithelium
+Allocortex
+Alveolar capillary
+Alveolus
+Amacrine
+Amniotic fluid
+Amniotic membrane
+Ampullary
+Amygdala
+Annulus fibrosus
+Anogenital tract
+Anorectal junction
+Antecubital vein
+Anterior cruciate ligament
+Anterior lobule
+Anterior presomitic mesoderm
+Aorta
+Aortic root
+Aortic valve
+Arm
+Artery
+Arthrosis
+Articular Cartilage
+Articulation
+Ascending aorta
+Ascites
+Ascitic fluid
+Astrocyte
+Atrium
+Auditory cortex
+Basal
+Basal airway
+Basilar membrane
+Bed nucleus of the stria terminalis
+Beige Fat
+Belly
+Bile duct
+Biliary tract
+Bipolar
+Bladder
+Bladder mucosa
+Blastomere
+Blood
+Blood brain barrier
+Blood vessel
+Bone
+Bone marrow
+Brain
+Breast
+Bronchi
+Bronchial vessel
+Bronchiole
+Bronchoalveolar lavage
+Bronchoalveolar system
+Bronchus
+Brown adipose tissue
+Brush
+Buccal mucosal epithelium
+Caecum
+Calvaria
+Capillary
+Cardiac
+Cardiac atrium
+Cardiac neural crest
+Cardiomyocyte
+Cardiosphere
+Cardiovascular system
+Carotid artery
+Carotid plaque
+cartilage
+Cartilage
+Cauda epididymis
+Caudal cortex
+Caudal forebrain
+Caudal ganglionic eminence
+Cavernosum
+Central amygdala
+Central nervous system
+Central Nervous System
+Cerebellar nuclei
+Cerebellum
+Cerebral cortex
+Cerebral motor cortex
+Cerebral organoid
+Cerebrospinal fluid
+Cervix
+Choriocapillaris
+Chorionic villi
+Chorionic villus
+Choroid
+Choroid plexus
+Choroid plexus capillary
+Ciliated
+Cochlea
+Cochlear duct
+Colon
+colorectal
+Colon epithelium
+Colonic crypt
+Colorectum
+Cone
+Conjunctiva
+Connective tissue
+Cornea
+Corneal endothelium
+Corneal epithelium
+Cornu ammonis 1
+Cornu ammonis 2
+Coronary artery
+Corpus callosum
+Corpus luteum
+Cortex
+Cortical layer
+Cortical thymus
+Decidua
+Deciduous tooth
+Delta
+dendritic
+Dental pulp
+Dermal microvasculature
+Dermal papilla
+Dermis
+Diaphragm
+Diencephalon
+Distal airway
+Distal limb mesenchyme
+Distal lung endoderm
+Dorsal forebrain
+Dorsal root ganglia
+Dorsal root ganglion
+Dorsal skin
+Dorsolateral prefrontal cortex
+Dorsomedial hypothalamus
+Ductal
+Ductal tissue
+Duodenum
+Ear
+Ectocervix
+Ectoderm
+Efferent artery
+Elongating
+Embryo
+Embryoid body
+Embryonic
+Embryonic brain
+Embryonic breast
+Embryonic ectoderm
+Embryonic endoderm
+Embryonic heart
+Embryonic Kidney
+Embryonic mesoderm
+Embryonic prefrontal cortex
+Embryonic stem cell
+Embryos
+Endocardial
+Endocardium
+Endocrine
+Endocrine organ
+endoderm
+Endoderm
+Endodontium
+Endometrium
+Endometrium stroma
+Endothelial
+Endothelium
+Enteric neural crest
+Enterocyte
+Enteroendocrine
+Entorhinal cortex
+Eosinophil
+Epiblast
+Epicardial
+Epidermis
+epithelial
+Epithelium
+erythrocyte
+Erythroid
+Esophageal
+Esophagus
+External genitalia
+Extra-embryonic ectoderm
+Extra-embryonic endoderm
+Extra-embryonic mesoderm
+Extra-embryonic tissue
+Eye
+Fat
+Fat pad
+Femur bone
+Fetal brain
+Fetal gonad
+Fetal heart
+Fetal hypothalamus
+Fetal ileums
+Fetal kidney
+Fetal Leydig
+Fetal liver
+Fetal lung
+Fetal ovary
+Fetal pancreas
+Fetal skin
+Fetal striatum
+Fetal thymus
+Fetal umbilical cord
+Fetus
+First heart field|FHF
+Flesh
+Focculus
+Foot
+Foregut endoderm
+Foreskin
+Frontal cortex
+Fundic gland
+Gall bladder
+Ganglion
+Ganglion cell layer of retina
+Gastric corpus
+Gastric epithelium
+Gastric gland
+Gastric isthmus
+Gastrointestinal tract
+Genitals
+Germ
+Germinal center
+Gingiva
+glioma
+Glomerular capillary
+Glomerulus
+Goblet
+Gonad
+Granulocyte-monocyte
+Granulosa
+Gut
+Hair canal
+Hair follicle
+Head
+Head and Neck
+Heart
+Heart muscle
+Heart valve
+Hematopoietic
+hepatic
+Hind limb
+Hindlimb
+Hippocampus
+Hypothalamic brain slice
+Hypothalamic nucleus
+Hypothalamus
+Hypothalamus-POA
+Ileum
+Iliac crest
+Immune
+Incisor
+Inferior colliculus
+Inner cell mass
+Inner Ear
+Inner nuclear layer of retina
+Interfollicular epidermis
+Interneuron
+Intervertebral disc
+Intestinal crypt
+Intestine
+Intestine/Proliferating ECs pool
+Intrahepatic cholangio
+Ionocyte
+Jejunum
+Joint
+Juxta-cardiac field|JCF
+Kidney
+Kidney cortex
+Knee
+Knee joint
+Lacrimal gland
+Large intestine
+Large Intestine
+Large peritoneal
+Laryngeal squamous epithelium
+Larynx
+Lateral ganglionic eminence
+Lateral hypothalamus
+Left lobe
+Left ventricle
+Leukocyte
+Leydig
+Ligament
+Limb
+Limb bud
+Limbal epithelium
+Liver
+lmmLeydig
+LMPP
+Lobule VI
+Lower dermis
+Lower hair follicle
+Lumbar
+Lumbar vertebra
+Luminal
+Lung
+Lymph
+Lymph node
+Lymphatic vessel
+Lymphoid
+Lymphoid tissue
+Macrovessel
+Main olfactory epithelia
+Malignant pleural effusion
+Mammary epithelium
+Mammary gland
+Mammary Gland
+Mandibular alveolar bone
+Marrow
+Medial ganglionic eminence
+Medullary thymus
+Megakaryocyte
+Melanoma
+Meninge
+Meniscus
+Mesangial
+Mesenchymal
+Mesenchyme
+Mesenteric lymph node
+Mesoblast
+Mesoderm
+Mesodermal precursor
+Mesonephros
+Microglial
+Microvascular endothelium
+Microvessel
+Midbrain
+Middle temporal gyrus
+Molar
+Morula
+Motor cortex
+Mouth
+muscle
+Muscle
+Myeloid
+Myenteric plexus
+Myocardium
+Myofibroblast
+Myometrium
+Nasal
+Nasal cavity
+Nasal concha
+Nasal epithelium
+Nasal mucosa
+Nasal polyp
+Nasopharyngeal mucosa
+Nasopharynx
+Neck
+Neocortex
+Nephron
+Nerve
+Neural
+Neural tube
+Neuroendocrine
+Neuron
+Neutrophil
+Nodose
+Nodular tissue
+Nodulus
+Non-Vasculature
+Nose
+Nucleus accumbens
+Nucleus pulposus
+Olfactory neuroepithelium
+Oligodendrocyte
+Omentum
+Oocyte
+Optic nerve
+Oral cavity
+Oral mucosa
+Osteoarthritic cartilage
+Outflow tract
+Ovarian cortex
+Ovarian follicle
+Ovary
+Oviduct
+Palatine tonsil
+Pancreas
+pancreatic
+Pancreatic acinar tissue
+Pancreatic duct
+Pancreatic islet
+Paneth
+Parotid gland
+PBMC
+PeriBiliary cell gland
+Peribiliary gland
+Perichondrium
+Periodontal ligament
+Periodontium
+Periosteum
+Peripheral blood
+Peritoneal cavity
+Peritoneal fluid
+Peritoneum
+Peyer patch
+Pharynx
+Photoreceptor
+Pit
+Pituitary
+Pituitary gland
+Placenta
+Plasma
+Pleura
+Pluripotent stem cell
+Polyp
+Posterior fossa
+Posterior lobule
+Posterior presomitic mesoderm
+Posterior second heart field
+Prefrontal cortex
+Premolar
+Presomitic mesoderm
+Primary motor cortex
+Primary visual cortex
+Primitive endoderm
+Primitive streak
+Primordial germ
+progenitor
+Prostate
+Proximal lung endoderm
+Pulmonary aorta
+Pulmonary arteriy
+Pyloric gland
+Pylorus
+Rectum
+Red pulp
+renal
+Renal glomerulus
+Renal Tubule
+Respiratory tract
+Retina
+Retina vessel
+Retinal
+Retinal organoid
+Retinal pigment epithelium
+Right ventricle
+Rod
+Saliva
+Salivary duct
+Salivary gland
+Scalp
+Sciatic nerve
+Sclerocorneal tissue
+Sebaceous gland
+Secretory
+Seminal plasma
+Septum transversum
+Sertoli
+Serum
+Serum exosome
+Sinoatrial node
+Sinonasal mucosa
+Sinus tissue
+Skeletal muscle
+Skeletal Muscle
+Skin
+Skin of back
+Small intestinal crypt
+Small intestine
+Smooth
+Smooth muscle
+Soft palate
+Soft tissue
+Somatosensory cortex
+Sperm
+Spermatogenic
+Spermatogonial
+Spermatogonium
+Spinal column
+Spinal cord
+Spleen
+Splenic red pulp
+Sputum
+Stomach
+Striatum
+Subcutaneous adipose tissue
+Subgranular zone
+Submandibular gland
+Subpallium
+Subplate
+Subventricular zone
+Superior cervical ganglion
+Superior frontal gyrus
+Suprarenal gland
+Sural nerve
+Suture mesenchyme
+Sympathetic ganglion
+Synovial
+Synovial fluid
+Synovium
+Taste bud
+temporal
+Tendon
+Testis
+Thalamus
+Thoracic aorta
+Thorax
+Thymus
+Thyroid
+Tongue
+Tonsil
+Tooth
+Trachea
+Tracheal airway epithelium
+Transformed artery
+Trophectoderm
+Trophoblast
+Tuft
+Umbilical cord
+Umbilical cord blood
+Umbilical vein
+Undefined
+Upper hair follicle
+Urethra
+Urine
+Urothelium
+Uterine cervix
+Uterus
+Vagina
+Vein
+Venous blood
+Ventral posterior hypothalamus|VPH
+Ventral tegmental area
+Ventral thalamus
+Ventricle
+Ventricular and atrial
+Ventricular zone
+Ventromedial hypothalamus|VMHvl
+Vessel
+Visceral adipose tissue
+Vocal cord
+Vocal fold
+Whartons jelly
+White adipose tissue
+White matter
+Yolk sac

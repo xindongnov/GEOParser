@@ -1,0 +1,17 @@
+knockout
+knockin
+crispr
+cas9
+KO
+overexpressed
+overexpress
+RNAi
+knock-in
+knock-out
+CRISPRi
+overexpression
+superexpression
+superexpress
+TALENs
+siRNA
+ZFNs
