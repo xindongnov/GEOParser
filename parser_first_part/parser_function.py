@@ -493,7 +493,7 @@ def get_meta_url(gseid,
                         ret['other'] = res
                     res = None
                 if 'clip' in ttype:
-                    res = match_other(GSE_meta_dict)
+                    res = match_clip(GSE_meta_dict)
                     if res:
                         ret['clip'] = res
                     res = None
@@ -512,31 +512,31 @@ def get_meta_url(gseid,
                             if gsm.startswith('GSM'):
                                 _, gsm_xml_path = getGSMXML(gseid, gsm, error_file_name_path, gse_dir_path)
                                 if os.path.isfile(gsm_xml_path):
-                                        gsm_xml_root = read_xmlfile(gsm_xml_path)
-                                        gsm_URL = get_element_data(gsm_xml_root, 'Supplementary-Data', 'GSM_URL')
-                                        GSM_Organism = get_element_data(gsm_xml_root, 'Organism', 'GSM_Organism')
-                                        gsm_URL_value = gsm_URL.get("GSM_URL", None)
-                                        GSM_Organism_value = GSM_Organism.get('GSM_Organism', None)
-                                            # Write to GSE_GSM_output.csv
-                                        with open(gse_gsm_output_csv, 'a', newline='') as gsm_csvfile:
-                                                csvwriter_gsm = csv.writer(gsm_csvfile, delimiter='\t')
-                                                csvwriter_gsm.writerow([gseid, gsm, GSM_Organism_value, gsm_URL_value])
+                                    gsm_xml_root = read_xmlfile(gsm_xml_path)
+                                    gsm_URL = get_element_data(gsm_xml_root, 'Supplementary-Data', 'GSM_URL')
+                                    GSM_Organism = get_element_data(gsm_xml_root, 'Organism', 'GSM_Organism')
+                                    gsm_URL_value = gsm_URL.get("GSM_URL", None)
+                                    GSM_Organism_value = GSM_Organism.get('GSM_Organism', None)
+                                    # Write to GSE_GSM_output.csv
+                                    with open(gse_gsm_output_csv, 'a', newline='') as gsm_csvfile:
+                                        csvwriter_gsm = csv.writer(gsm_csvfile, delimiter='\t')
+                                        csvwriter_gsm.writerow([gseid, gsm, GSM_Organism_value, gsm_URL_value])
                                 else:
                                     print(f"Error parsing {gseid},{gsm}")
                                     with open(error_file_name_path, 'a', newline='', encoding='utf-8') as csvfile:
-                                                    fieldnames = ['gse','gsm']
-                                                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter='\t')
-                                                    writer.writerow({'gse': gseid,'gsm':gsm})
+                                        fieldnames = ['gse','gsm']
+                                        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter='\t')
+                                        writer.writerow({'gse': gseid,'gsm':gsm})
             except:
                 print(f"Error parsing {gseid}")
                 with open(error_file_name_path, 'a', newline='', encoding='utf-8') as csvfile:
-                                fieldnames = ['gse','gsm']
-                                writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
-                                writer.writerow({'gse': gseid,'gsm':'GSE_XML_file error.'})
+                    fieldnames = ['gse','gsm']
+                    writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
+                    writer.writerow({'gse': gseid,'gsm':'GSE_XML_file error.'})
         else:
             print(f"Error parsing {gseid}")
             with open(error_file_name_path, 'a', newline='', encoding='utf-8') as csvfile:
-                            fieldnames = ['gse','gsm']
-                            writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
-                            writer.writerow({'gse': gseid,'gsm':'no GSE'})
+                fieldnames = ['gse','gsm']
+                writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
+                writer.writerow({'gse': gseid,'gsm':'no GSE'})
         
