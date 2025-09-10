@@ -279,7 +279,7 @@ def get_element_data(xml_root, element_name, attribute_name):
         if attribute_value:
             element_list.append(attribute_value)
     if element_list:
-        element_dict[attribute_name] = element_list
+        element_dict[attribute_name] = ', '.join(element_list)
     return element_dict
 
 
@@ -327,7 +327,7 @@ def match_KeyWord(xmlContent, key):
     res = {}
     for field in xmlContent.keys():
         if field in list(xmlContent.keys()):
-            tmp = list(set(re.findall(r'%s' % key, xmlContent[field][0].replace(
+            tmp = list(set(re.findall(r'%s' % key, xmlContent[field].replace(
                 '-', ' ').replace('_', ' '), re.I)))
             if tmp:
                 res[field] = tmp  # a list in dict
@@ -406,9 +406,9 @@ def match_other(xmlContent):
         os.system('echo "No XML content"')
         return {}
     match_res = {}
-    singleCellATACSeqKeywords = ["stereo-seq"," coxmx 6000", "visium hd", "xenium",'stereo seq',]
+    OtherKeywords = ["stereo-seq"," coxmx 6000", "visium hd", "xenium",'stereo seq',]
     # 1. match with single cell words, remove special characters, like '-'
-    for key1 in singleCellATACSeqKeywords:
+    for key1 in OtherKeywords:
         tmp = match_KeyWord(xmlContent, key1)
         if tmp:
             for i in tmp.keys():
@@ -425,17 +425,17 @@ def match_clip(xmlContent):
         os.system('echo "No XML content"')
         return {}
     match_res = {}
-    ClipKeywords = ["clip-seq", "clip seq", "hits-clip", "hits clip", 
+    ClipKeywords = ["clip-seq", " clip seq", "hits-clip", "hits clip", 
                     "par-clip", "par clip", 'iclip', 'eclip', 'irclip',
-                    'clip', 'crosslinking immunoprecipitation', 'crosslinking and immunoprecipitation',
+                    ' clip ', 'crosslinking immunoprecipitation', 'crosslinking and immunoprecipitation',
                     'crosslinking-immunoprecipitation', 'crosslinking-and immunoprecipitation',
                     'chirp-seq', 'chirp seq', 'chromatin isolation by rna purification', 
                     'chart-seq', 'chart seq', 'capture hybridization analysis of rna targets',
-                    'rap-seq', 'rap seq', 'rna antisense purification', 'rap-ms', 'rap ms', 
+                    ' rap-seq', ' rap seq', 'rna antisense purification', ' rap-ms', ' rap ms', 
                     'rnacompete', 'selex', 'systematic evolution of ligands by exponential enrichment',
                     'rna-interactome capture', 'rna interactome capture', 
-                    'caric', 'rbdmap', 'enhanced rna interactome capture']
-    # 1. match with single cell words, remove special characters, like '-'
+                    ' caric ', 'rbdmap', 'enhanced rna interactome capture']
+    # 1. match with key words, remove special characters, like '-'
     for key1 in ClipKeywords:
         tmp = match_KeyWord(xmlContent, key1)
         if tmp:
@@ -460,7 +460,7 @@ def get_meta_url(gseid,
         if os.path.isfile(gse_xml_path):
             try:
                 xml_root = read_xmlfile(gse_xml_path)
-                gse_dir_path = os.path.join(path, gseid)
+                gse_dir_path = os.path.join(path, gseid[0:6], gseid)
                 GSE_meta_dict = get_GSE_dict(xml_root)
                 accession_values = GSE_meta_dict.get('Accession', None)
                 GSE_URL_value = GSE_meta_dict.get('GSE_URL', None)
@@ -508,7 +508,9 @@ def get_meta_url(gseid,
                                             GSE_URL_value, matched_key, matched_key_value])
                 ## Decide whether to crawl GSM
                     if not only_GSE:
-                        for gsm in accession_values:
+                        # print(accession_values)
+                        for gsm in accession_values.split(', '):
+                            print(gsm)
                             if gsm.startswith('GSM'):
                                 _, gsm_xml_path = getGSMXML(gseid, gsm, error_file_name_path, gse_dir_path)
                                 if os.path.isfile(gsm_xml_path):
@@ -522,7 +524,7 @@ def get_meta_url(gseid,
                                         csvwriter_gsm = csv.writer(gsm_csvfile, delimiter='\t')
                                         csvwriter_gsm.writerow([gseid, gsm, GSM_Organism_value, gsm_URL_value])
                                 else:
-                                    print(f"Error parsing {gseid},{gsm}")
+                                    print(f"Error parsing {gseid} : {gsm}")
                                     with open(error_file_name_path, 'a', newline='', encoding='utf-8') as csvfile:
                                         fieldnames = ['gse','gsm']
                                         writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter='\t')

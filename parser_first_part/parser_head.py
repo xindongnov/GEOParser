@@ -90,18 +90,21 @@ def main():
             gdsSamples = p_f.getGDSSamples(date_region)
             gdsSamples_len = len(gdsSamples)
             print("gdsSamples_len:{}".format(gdsSamples_len))
-            for i in tqdm(range(len(gdsSamples))):
-                gseid = p_f.gse_idToAcc(gdsSamples[i])
-                print('{} is starting'.format(gseid))
-                p_f.get_meta_url(gseid,
-                                 gse_output_csv,
-                                 gse_gsm_output_csv,
-                                 path = geo_path,
-                                 error_file_name_path = error_file_name_path,
-                                 ttype=ttype,
-                                 only_GSE = only_GSE)
-                end = time.time()
-                print('Total time:', end - start)
+            for i in range(gdsSamples_len):
+                with tqdm(total=gdsSamples_len) as pbar:
+                    gseid = p_f.gse_idToAcc(gdsSamples[i])
+                    pbar.set_description(f"Processing {gseid}")
+                    # print('{} is starting'.format(gseid))
+                    p_f.get_meta_url(gseid,
+                                    gse_output_csv,
+                                    gse_gsm_output_csv,
+                                    path = geo_path,
+                                    error_file_name_path = error_file_name_path,
+                                    ttype=ttype,
+                                    only_GSE = only_GSE)
+                    pbar.update(i)
+                    # end = time.time()
+                    # print('Total time:', end - start)
                     
 if __name__ == "__main__":
     main()
