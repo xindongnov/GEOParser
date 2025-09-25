@@ -1,0 +1,39 @@
+sc-rna-seq: ['scrna sequencing','single cell', 'scrnaseq', 
+            'single cells', 'scrna seq', 'singlecell rnaseq', 'singlecell transcriptome']
+
+sc-atac-seq: ['scatacseq', 'sc-atacseq', 'singlecell atacseq', 'singlecell chromatin accessibility',
+              'single cell atacseq',  'single cell chromatin accessibility', 'single nucleus atacseq',
+              'singlecell assay for transposase accessible chromatin', 'sciatacseq', 'dsciatacseq',
+              'singlenucleus atacseq', '(sci)atacseq', 'scatac', 'single cell profiling of chromatin accessibility',
+              'scthsseq', 'sndropseq','atac','atac-seq','atacseq', 'atac seq']
+
+spatial: ['visium','stereoseq','stereo-seq','seqscope','spatial transcriptomics',
+                        'spatial transcriptome','spatial gene expression','spatial rna sequencing']
+
+clip: [' clip-seq', ' clip seq', 'hits-clip', 'hits clip', 'infrared clip', 'hypertribe', ' tribe ',
+      'par-clip', 'par clip', ' iclip ', ' eclip ', ' irclip ', 'goldclip', 'esayclip', 
+      ' clip ', 'crosslinking immunoprecipitation', 'crosslinking and immunoprecipitation',
+      'crosslinking-immunoprecipitation', 'crosslinking-and immunoprecipitation',
+      'chirp-seq', 'chirp seq', 'chromatin isolation by rna purification', 
+      'chart-seq', 'chart seq', 'capture hybridization analysis of rna targets',
+      ' rap-seq', ' rap seq', 'rna antisense purification', ' rap-ms', ' rap ms', 
+      'rnacompete', 'brdu clip', 'fusion clip', 'tribe id', 'cbrpp', 'incprint',
+      'rna-interactome capture', 'rna interactome capture', ' rip seq', ' rip-seq',
+      'rna interactome using click chemistry', 'crispr based rna united interacting system',
+      'peptide nucleic acid assisted identification of rbps',
+      ' caric ', 'rbdmap', 'enhanced rna interactome capture']
+
+RRI: ['rri-seq', 'rri seq', 'rri', 'rna rna interactome', 'rna rna interaction',
+      'rna rna interactome sequencing', 'rna rna interactome seq', 'rriseq',
+      ' paris ', ' paris2 ', 'psoralen analysis of rna interactions and structure',
+      'ligated rna-rna hybrids', 'ligated rna rna hybrids', 'splinted ligation',
+      'splinted ligation of interacting rnas', 'ligated chimeric rnars hybrids',
+      'ligated chimeric rna rna hybrids', 'hiclip', 'hi clip', 
+      'clear clip', 'ipar clip', 'ligr seq', ' splash ', 'ric seq', 
+      ' mario ', 'mapping rna interactome in vivo', 'rna proximity ligation', 
+      'chirp seq', 'chart seq', 'capture hybridization analysis of rna targets',
+      ' clash ', 'crosslinking, ligation, and sequencing of hybrids', 'rap seq',
+      'crosslinking ligation and sequencing of hybrids', 'crosslinking, ligation and sequencing of hybrids',
+      'ligated rna rna hybrids']
+
+other: ["stereo-seq"," coxmx 6000", "visium hd", "xenium",'stereo seq',]

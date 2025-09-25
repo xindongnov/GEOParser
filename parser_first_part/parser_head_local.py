@@ -3,6 +3,9 @@ import csv
 import time
 import argparse
 import parser_function as p_f
+from ruamel.yaml import YAML
+
+yaml=YAML(typ='safe')
 
 def main():
     parser = argparse.ArgumentParser()
@@ -13,6 +16,8 @@ def main():
                         help='path to the URL of GSE and GSM ')
     parser.add_argument('-p', '--geo_path', required=False, default='geo_gse',
                         help="path to xml files")
+    parser.add_argument('-k', '--keywords_yaml', type=str, required=False, default='keywords.yml',
+                        help='a yaml file contains key words for different data types')
     parser.add_argument('-t', '--ttype', required=False, default='',
                         help="which type of data you want to crawl")
     parser.add_argument("-ef",'--error_file_csv',required=False, default='error_file_name.csv',
@@ -24,10 +29,15 @@ def main():
     gse_output_csv = args.gse_output_csv
     gse_gsm_output_csv = args.gse_gsm_output_csv
     geo_path = args.geo_path
+    keywords_yaml = args.keywords_yaml
     ttype = args.ttype
     error_file_name_path = args.error_file_csv
     only_GSE = args.only_GSE
     print(only_GSE)
+
+    ttype = ttype.split(',')
+
+    keywords = yaml.load(open(keywords_yaml))
 
     dirs =os.listdir(geo_path)
     for folder in dirs:
@@ -36,7 +46,14 @@ def main():
                     # if folder in GSEIDs: ## if want to get the specific GSEIDs(such as ST's GSE, use this)
                 folder_path = os.path.join(geo_path, folder) 
                 gse_xml_path = os.path.join(folder_path, "%s.xml" % folder) 
-                p_f.get_meta_url(folder,gse_output_csv,gse_gsm_output_csv,path = geo_path,error_file_name_path = error_file_name_path,ttype=ttype,only_GSE = only_GSE)
+                p_f.get_meta_url(folder,
+                                 gse_output_csv,
+                                 gse_gsm_output_csv,
+                                 error_file_name_path = error_file_name_path,
+                                 keywords=keywords,
+                                 path = geo_path,
+                                 ttype=ttype,
+                                 only_GSE = only_GSE)
                 print("GSE:{} is finished.".format(folder))
             except:
                 print("GSE:{} is failed.".format(folder))

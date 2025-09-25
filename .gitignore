@@ -1,3 +1,5 @@
 .vscode/
 __pycache__/
 parser_first_part/gdsSamples.txt
+parser_first_part/gsm_notXML.txt
+parser_first_part/error_file_name.csv

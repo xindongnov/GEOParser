@@ -88,47 +88,43 @@ def getSyncLog(infoStr):
     os.system('echo "[%s] %s"' % (time.strftime('%H:%M:%S'), infoStr))
 
 
-def getGeoXML(accession, error_file_name_path,path='geo_gse'):
+def queryUrl(url):
+    """Given a URL, return the XML record for it
+    (making the urllib call)"""
+    with urllib.request.urlopen(url, timeout=20) as response:
+        content = response.read() # Read the content
+        docString = content.decode('utf-8')
+    return docString
+
+
+def getGeoXML(accession, error_file_name_path, path='geo_gse'):
     """HANDLES GEO XML records--i.e. our GEO XML librarian!
     Given a GEO ACCESSION ID, return the xml record for it
     (making the urllib call)"""
     # path pattern: EXAMPLE-GSE1126513 geo/GSE112/GSE112651
     # path = os.path.join(_ppath, ddir)
-    if not os.path.exists(path):
-        os.mkdir(path)
-    path_trunc = os.path.join(path, accession[0:6])
-    if not os.path.exists(path_trunc):
-        os.mkdir(path_trunc)
-    subdir = os.path.join(path_trunc, accession)
+    # if not os.path.exists(path):
+    #     os.mkdir(path)
+    subdir = os.path.join(path, accession[0:6], accession)
     if not os.path.exists(subdir):
-        os.mkdir(subdir)
-    path = os.path.join(subdir, "%s.xml" % accession)
-    if os.path.exists(path):
-        f = open(path)
+        os.makedirs(subdir)
+    file_path = os.path.join(subdir, "%s.xml" % accession)
+
+    if os.path.exists(file_path):
+        f = open(file_path)
         docString = f.read()
         f.close() 
     else:
-        # print accession
         URL = "http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=%s&view=quick&form=xml&targ=self" % accession
         try:
-            with urllib.request.urlopen(URL) as response:
-        # Read the content
-                content = response.read()
-                # Decode bytes to string (assuming UTF-8 encoding)
-                docString = content.decode('utf-8')
+            docString = queryUrl(URL)
             if not isXML(docString):  # try again
-                # signal.alarm(180)
-                with urllib.request.urlopen(URL) as response:
-        # Read the content
-                    content = response.read()
-                    # Decode bytes to string (assuming UTF-8 encoding)
-                    docString = content.decode('utf-8')
+                docString = queryUrl(URL)
             if isXML(docString):
                 # write to file
-                f = open(path, "w")
+                f = open(file_path, "w")
                 f.write(docString)
                 f.close()
-                # getSyncLog(proxy.values()[0]+'\t'+accession + '\n')# output record
             else:
                 print(accession)
                 print(
@@ -140,24 +136,14 @@ def getGeoXML(accession, error_file_name_path,path='geo_gse'):
             try:
                 print("Network fluctuations. Wait for 5s.")
                 time.sleep(5)
-                with urllib.request.urlopen(URL) as response:
-            # Read the content
-                    content = response.read()
-                    # Decode bytes to string (assuming UTF-8 encoding)
-                    docString = content.decode('utf-8')
+                docString = queryUrl(URL)
                 if not isXML(docString):  # try again
-                    # signal.alarm(180)
-                    with urllib.request.urlopen(URL) as response:
-            # Read the content
-                        content = response.read()
-                        # Decode bytes to string (assuming UTF-8 encoding)
-                        docString = content.decode('utf-8')
+                    docString = queryUrl(URL)
                 if isXML(docString):
                     # write to file
-                    f = open(path, "w")
+                    f = open(file_path, "w")
                     f.write(docString)
                     f.close()
-                    # getSyncLog(proxy.values()[0]+'\t'+accession + '\n')# output record
                 else:
                     print(accession)
                     print(
@@ -174,42 +160,32 @@ def getGeoXML(accession, error_file_name_path,path='geo_gse'):
                 docString = None
                 print(f"Error parsing {accession}")
                 with open(error_file_name_path, 'a', newline='', encoding='utf-8') as csvfile:
-                                fieldnames = ['gse','gsm']
-                                writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
-                                writer.writerow({'gse': accession,'gsm':'no GSE'})
-    return docString, path
+                    fieldnames = ['gse','gsm']
+                    writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
+                    writer.writerow({'gse': accession,'gsm':'no GSE'})
+    return docString, file_path
 
-def getGSMXML(gseid,accession, error_file_name_path, path):
+def getGSMXML(gseid, accession, error_file_name_path, path):
     """HANDLES GSM XML records--i.e. our GSM XML librarian!
     Given a GSM ACCESSION ID, return the xml record for it
     (making the urllib call)"""
-    subdir = os.path.join(path, "%s.xml" % accession)
-    if os.path.exists(subdir):
-        f = open(subdir)
+    file_path = os.path.join(path, "%s.xml" % accession)
+    if os.path.exists(file_path):
+        f = open(file_path)
         docString = f.read()
         f.close()
     else:
         # print accession
         URL = "http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=%s&view=quick&form=xml&targ=self" % accession
         try:
-            with urllib.request.urlopen(URL) as response:
-        # Read the content
-                content = response.read()
-                # Decode bytes to string (assuming UTF-8 encoding)
-                docString = content.decode('utf-8')
+            docString = queryUrl(URL)
             if not isXML(docString):  # try again
-                # signal.alarm(180)
-                with urllib.request.urlopen(URL) as response:
-        # Read the content
-                    content = response.read()
-                    # Decode bytes to string (assuming UTF-8 encoding)
-                    docString = content.decode('utf-8')
+                docString = queryUrl(URL)
             if isXML(docString):
                 # write to file
-                f = open(subdir, "w")
+                f = open(file_path, "w")
                 f.write(docString)
                 f.close()
-                # getSyncLog(proxy.values()[0]+'\t'+accession + '\n')# output record
             else:
                 print(accession)
                 print(
@@ -221,24 +197,14 @@ def getGSMXML(gseid,accession, error_file_name_path, path):
             try:
                 print("Network fluctuations. Wait for 5s.")
                 time.sleep(5)
-                with urllib.request.urlopen(URL) as response:
-            # Read the content
-                    content = response.read()
-                    # Decode bytes to string (assuming UTF-8 encoding)
-                    docString = content.decode('utf-8')
+                docString = queryUrl(URL)
                 if not isXML(docString):  # try again
-                    # signal.alarm(180)
-                    with urllib.request.urlopen(URL) as response:
-            # Read the content
-                        content = response.read()
-                        # Decode bytes to string (assuming UTF-8 encoding)
-                        docString = content.decode('utf-8')
+                    docString = queryUrl(URL)
                 if isXML(docString):
                     # write to file
-                    f = open(subdir, "w")
+                    f = open(file_path, "w")
                     f.write(docString)
                     f.close()
-                    # getSyncLog(proxy.values()[0]+'\t'+accession + '\n')# output record
                 else:
                     print(accession)
                     print(
@@ -257,7 +223,7 @@ def getGSMXML(gseid,accession, error_file_name_path, path):
                     fieldnames = ['gse','gsm']
                     writer = csv.DictWriter(csvfile,fieldnames=fieldnames, delimiter='\t')
                     writer.writerow({'gse': gseid,'gsm':accession})
-    return docString, subdir
+    return docString, file_path
 
 def read_xmlfile(xml_path):
     ''' 
@@ -327,14 +293,12 @@ def match_KeyWord(xmlContent, key):
     res = {}
     for field in xmlContent.keys():
         if field in list(xmlContent.keys()):
-            tmp = list(set(re.findall(r'%s' % key, xmlContent[field].replace(
-                '-', ' ').replace('_', ' '), re.I)))
+            tmp = list(set(re.findall(r'%s' % key, xmlContent[field].replace('_', ' '), re.I)))
             if tmp:
                 res[field] = tmp  # a list in dict
     return res
 
-
-def match_scRNAseq(xmlContent):
+def match_type(xmlContent, keywords):
     """
     match key words, like single cell, single cell RNA-seq, and sequencing platform,etc
     return a dict, contains geo items and matched keys
@@ -343,111 +307,130 @@ def match_scRNAseq(xmlContent):
         os.system('echo "No XML content"')
         return {}
     match_res = {}
-    # 1. match with single cell words, remove special characters, like '-'
-    for key1 in ['scrna sequencing','single cell', 'scrnaseq', 'single cells', 'scrna seq', 'singlecell rnaseq', 'singlecell transcriptome']:
-        tmp = match_KeyWord(xmlContent, key1)
+    for key in keywords:
+        tmp = match_KeyWord(xmlContent, key)
         if tmp:
             for i in tmp.keys():
-                match_res[i].extend(tmp[i]) if i in match_res.keys(
-                ) else match_res.update({i: tmp[i]})
-    
+                match_res[i].extend(tmp[i]) if i in match_res.keys() else match_res.update({i: tmp[i]})
     return match_res
 
 
-def match_scATACseq(xmlContent):
-    """
-    match scATACseq key words,
-    return a dict, contains geo items and matched keys
-    """
-    if not xmlContent:
-        os.system('echo "No XML content"')
-        return {}
-    match_res = {}
-    singleCellATACSeqKeywords = ['scatacseq', 'sc atacseq', 'singlecell atacseq', 'singlecell chromatin accessibility',
-                                 'single cell atacseq',  'single cell chromatin accessibility', 'single nucleus atacseq',
-                                 'singlecell assay for transposase accessible chromatin', 'sciatacseq', 'dsciatacseq',
-                                 'singlenucleus atacseq', '(sci)atacseq', 'scatac', 'single cell profiling of chromatin accessibility',
-                                 'scthsseq', 'sndropseq','atac','atac_seq','atacseq', 'atac seq']
-    # 1. match with single cell words, remove special characters, like '-'
-    for key1 in singleCellATACSeqKeywords:
-        tmp = match_KeyWord(xmlContent, key1)
-        if tmp:
-            for i in tmp.keys():
-                match_res[i].extend(tmp[i]) if i in match_res.keys(
-                ) else match_res.update({i: tmp[i]})
-    # print(match_res)
-    return match_res
+# def match_scRNAseq(xmlContent):
+#     """
+#     match key words, like single cell, single cell RNA-seq, and sequencing platform,etc
+#     return a dict, contains geo items and matched keys
+#     """
+#     if not xmlContent:
+#         os.system('echo "No XML content"')
+#         return {}
+#     match_res = {}
+#     # 1. match with single cell words, remove special characters, like '-'
+#     for key1 in ['scrna sequencing','single cell', 'scrnaseq', 'single cells', 'scrna seq', 'singlecell rnaseq', 'singlecell transcriptome']:
+#         tmp = match_KeyWord(xmlContent, key1)
+#         if tmp:
+#             for i in tmp.keys():
+#                 match_res[i].extend(tmp[i]) if i in match_res.keys(
+#                 ) else match_res.update({i: tmp[i]})
+#     return match_res
 
-def match_ST(xmlContent):
-    """
-    match ST key words, 
-    return a dict, contains geo items and matched keys
-    """
-    if not xmlContent:
-        os.system('echo "No XML content"')
-        return {}
-    match_res = {}
-    spatial_keywords = ['visium','stereoseq','stereo-seq','seqscope','spatial transcriptomics',
-                        'spatial transcriptome','spatial gene expression','spatial rna sequencing']
-    for key1 in spatial_keywords:
-        tmp = match_KeyWord(xmlContent, key1)
-        if tmp:
-            for i in tmp.keys():
-                match_res[i].extend(tmp[i]) if i in match_res.keys(
-                ) else match_res.update({i: tmp[i]})
-    return match_res
 
-def match_other(xmlContent):
-    """
-    match other key words, 
-    return a dict, contains geo items and matched keys
-    """
-    if not xmlContent:
-        os.system('echo "No XML content"')
-        return {}
-    match_res = {}
-    OtherKeywords = ["stereo-seq"," coxmx 6000", "visium hd", "xenium",'stereo seq',]
-    # 1. match with single cell words, remove special characters, like '-'
-    for key1 in OtherKeywords:
-        tmp = match_KeyWord(xmlContent, key1)
-        if tmp:
-            for i in tmp.keys():
-                match_res[i].extend(tmp[i]) if i in match_res.keys(
-                ) else match_res.update({i: tmp[i]})
-    return match_res
+# def match_scATACseq(xmlContent):
+#     """
+#     match scATACseq key words,
+#     return a dict, contains geo items and matched keys
+#     """
+#     if not xmlContent:
+#         os.system('echo "No XML content"')
+#         return {}
+#     match_res = {}
+#     singleCellATACSeqKeywords = ['scatacseq', 'sc-atacseq', 'singlecell atacseq', 'singlecell chromatin accessibility',
+#                                  'single cell atacseq',  'single cell chromatin accessibility', 'single nucleus atacseq',
+#                                  'singlecell assay for transposase accessible chromatin', 'sciatacseq', 'dsciatacseq',
+#                                  'singlenucleus atacseq', '(sci)atacseq', 'scatac', 'single cell profiling of chromatin accessibility',
+#                                  'scthsseq', 'sndropseq','atac','atac-seq','atacseq', 'atac seq']
+#     # 1. match with single cell words, remove special characters, like '-'
+#     for key1 in singleCellATACSeqKeywords:
+#         tmp = match_KeyWord(xmlContent, key1)
+#         if tmp:
+#             for i in tmp.keys():
+#                 match_res[i].extend(tmp[i]) if i in match_res.keys(
+#                 ) else match_res.update({i: tmp[i]})
+#     # print(match_res)
+#     return match_res
 
-def match_clip(xmlContent):
-    """
-    match clip key words, 
-    return a dict, contains geo items and matched keys
-    """
-    if not xmlContent:
-        os.system('echo "No XML content"')
-        return {}
-    match_res = {}
-    ClipKeywords = ["clip-seq", " clip seq", "hits-clip", "hits clip", 
-                    "par-clip", "par clip", 'iclip', 'eclip', 'irclip',
-                    ' clip ', 'crosslinking immunoprecipitation', 'crosslinking and immunoprecipitation',
-                    'crosslinking-immunoprecipitation', 'crosslinking-and immunoprecipitation',
-                    'chirp-seq', 'chirp seq', 'chromatin isolation by rna purification', 
-                    'chart-seq', 'chart seq', 'capture hybridization analysis of rna targets',
-                    ' rap-seq', ' rap seq', 'rna antisense purification', ' rap-ms', ' rap ms', 
-                    'rnacompete', 'selex', 'systematic evolution of ligands by exponential enrichment',
-                    'rna-interactome capture', 'rna interactome capture', 
-                    ' caric ', 'rbdmap', 'enhanced rna interactome capture']
-    # 1. match with key words, remove special characters, like '-'
-    for key1 in ClipKeywords:
-        tmp = match_KeyWord(xmlContent, key1)
-        if tmp:
-            for i in tmp.keys():
-                match_res[i].extend(tmp[i]) if i in match_res.keys(
-                ) else match_res.update({i: tmp[i]})
-    return match_res
+# def match_ST(xmlContent):
+#     """
+#     match ST key words, 
+#     return a dict, contains geo items and matched keys
+#     """
+#     if not xmlContent:
+#         os.system('echo "No XML content"')
+#         return {}
+#     match_res = {}
+#     spatial_keywords = ['visium','stereoseq','stereo-seq','seqscope','spatial transcriptomics',
+#                         'spatial transcriptome','spatial gene expression','spatial rna sequencing']
+#     for key1 in spatial_keywords:
+#         tmp = match_KeyWord(xmlContent, key1)
+#         if tmp:
+#             for i in tmp.keys():
+#                 match_res[i].extend(tmp[i]) if i in match_res.keys(
+#                 ) else match_res.update({i: tmp[i]})
+#     return match_res
+
+# def match_other(xmlContent):
+#     """
+#     match other key words, 
+#     return a dict, contains geo items and matched keys
+#     """
+#     if not xmlContent:
+#         os.system('echo "No XML content"')
+#         return {}
+#     match_res = {}
+#     OtherKeywords = ["stereo-seq"," coxmx 6000", "visium hd", "xenium",'stereo seq',]
+#     # 1. match with single cell words, remove special characters, like '-'
+#     for key1 in OtherKeywords:
+#         tmp = match_KeyWord(xmlContent, key1)
+#         if tmp:
+#             for i in tmp.keys():
+#                 match_res[i].extend(tmp[i]) if i in match_res.keys(
+#                 ) else match_res.update({i: tmp[i]})
+#     return match_res
+
+# def match_clip(xmlContent):
+#     """
+#     match clip key words, 
+#     return a dict, contains geo items and matched keys
+#     """
+#     if not xmlContent:
+#         os.system('echo "No XML content"')
+#         return {}
+#     match_res = {}
+#     ClipKeywords = [" clip-seq", " clip seq", "hits-clip", "hits clip", 'infrared clip', 'hypertribe', ' tribe ',
+#                     "par-clip", "par clip", ' iclip ', ' eclip ', ' irclip ', 'goldclip', 'esayclip', 
+#                     ' clip ', 'crosslinking immunoprecipitation', 'crosslinking and immunoprecipitation',
+#                     'crosslinking-immunoprecipitation', 'crosslinking-and immunoprecipitation',
+#                     'chirp-seq', 'chirp seq', 'chromatin isolation by rna purification', 
+#                     'chart-seq', 'chart seq', 'capture hybridization analysis of rna targets',
+#                     ' rap-seq', ' rap seq', 'rna antisense purification', ' rap-ms', ' rap ms', 
+#                     'rnacompete', 'brdu clip', 'fusion clip', 'tribe id', 'cbrpp', 'incprint',
+#                     'rna-interactome capture', 'rna interactome capture', ' rip seq', ' rip-seq',
+#                     'rna interactome using click chemistry', 'crispr based rna united interacting system',
+#                     'peptide nucleic acid assisted identification of rbps',
+#                     ' caric ', 'rbdmap', 'enhanced rna interactome capture']
+#     # 1. match with key words, remove special characters, like '-'
+#     for key1 in ClipKeywords:
+#         tmp = match_KeyWord(xmlContent, key1)
+#         if tmp:
+#             for i in tmp.keys():
+#                 match_res[i].extend(tmp[i]) if i in match_res.keys(
+#                 ) else match_res.update({i: tmp[i]})
+#     return match_res
 
 def get_meta_url(gseid, 
                  gse_output_csv,
                  gse_gsm_output_csv,
                  error_file_name_path,
+                 keywords,
                  ttype,
                  path = 'geo_gse',
                  only_GSE = False):
@@ -465,45 +448,53 @@ def get_meta_url(gseid,
                 accession_values = GSE_meta_dict.get('Accession', None)
                 GSE_URL_value = GSE_meta_dict.get('GSE_URL', None)
                 GSE_Title_value = GSE_meta_dict.get('GSE_Title', None)
+                GSE_link = f"https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={gseid}"
                 GSE_Pubmed_ID_value = GSE_meta_dict.get('GSE_Pubmed_ID', None)
                 GSE_Last_Update_Date_value = GSE_meta_dict.get('GSE_Last_Update_Date', None)
                 GSE_Release_Date_value = GSE_meta_dict.get('GSE_Release_Date', None)
                 ret = {}
-                if 'sc-rna-seq' in ttype:
-                    # single cell RNA-seq, Library-strategy must be RNA-Seq
-                    res = match_scRNAseq(GSE_meta_dict)
-                    if res:
-                        ret['sc-rna-seq'] = res
-                    res = None
-                if 'sc-atac-seq' in ttype:
-                    # single cell ATAC-seq, Library-strategy must be ATAC-Seq
-                    #if 'Genome binding/occupancy profiling by high throughput sequencing' in GSE_meta_dict['Type']:
-                    res = match_scATACseq(GSE_meta_dict)
-                    if res:
-                        ret['sc-atac-seq'] = res
-                    res = None
-                if 'spatial' in ttype:
-                    res = match_ST(GSE_meta_dict)
-                    if res:
-                        ret['spatial'] = res
-                    res = None
-                if 'other' in ttype:
-                    res = match_other(GSE_meta_dict)
-                    if res:
-                        ret['other'] = res
-                    res = None
-                if 'clip' in ttype:
-                    res = match_clip(GSE_meta_dict)
-                    if res:
-                        ret['clip'] = res
-                    res = None
+                for t in ttype:
+                    keyword = keywords.get(t, None)
+                    if keyword:
+                        res = match_type(GSE_meta_dict, keyword)
+                        if res:
+                            ret[t] = res
+                        res = None
+                # if 'sc-rna-seq' in ttype:
+                #     # single cell RNA-seq, Library-strategy must be RNA-Seq
+                #     res = match_scRNAseq(GSE_meta_dict)
+                #     if res:
+                #         ret['sc-rna-seq'] = res
+                #     res = None
+                # if 'sc-atac-seq' in ttype:
+                #     # single cell ATAC-seq, Library-strategy must be ATAC-Seq
+                #     #if 'Genome binding/occupancy profiling by high throughput sequencing' in GSE_meta_dict['Type']:
+                #     res = match_scATACseq(GSE_meta_dict)
+                #     if res:
+                #         ret['sc-atac-seq'] = res
+                #     res = None
+                # if 'spatial' in ttype:
+                #     res = match_ST(GSE_meta_dict)
+                #     if res:
+                #         ret['spatial'] = res
+                #     res = None
+                # if 'other' in ttype:
+                #     res = match_other(GSE_meta_dict)
+                #     if res:
+                #         ret['other'] = res
+                #     res = None
+                # if 'clip' in ttype:
+                #     res = match_clip(GSE_meta_dict)
+                #     if res:
+                #         ret['clip'] = res
+                #     res = None
                 matched_key = ','.join(list(ret.keys()))
                 matched_key_value = list(ret.values())
                 # Write to GSE_output.csv
                 if ret:
                     with open(gse_output_csv, 'a', newline='') as csvfile:
                         csvwriter = csv.writer(csvfile, delimiter='\t')
-                        csvwriter.writerow([gseid, GSE_Title_value, GSE_Pubmed_ID_value, 
+                        csvwriter.writerow([gseid, GSE_link, GSE_Title_value, GSE_Pubmed_ID_value, 
                                             GSE_Last_Update_Date_value, GSE_Release_Date_value, 
                                             GSE_URL_value, matched_key, matched_key_value])
                 ## Decide whether to crawl GSM
